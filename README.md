@@ -7,3 +7,16 @@ This repository contains exercises and examples from an online course section on
 - Writing SQL queries to interact with external APIs
 - Storing and managing API responses in PostgreSQL
 - Practical examples and use cases
+
+## Dependencies Installed
+
+The following dependencies are required for this project:
+
+- `dedent`
+- `express`
+- `jest`
+- `node-pg-migrate`
+- `nodemon`
+- `pg`
+- `pg-format`
+- `supertest`
