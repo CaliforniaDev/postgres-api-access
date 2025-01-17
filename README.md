@@ -22,3 +22,8 @@ The following dependencies are required for this project:
 - `supertest`
 - `dotenv`
 - `dotenv-cli`
+
+## VSCODE Extensions Installed
+
+- `SQL Tools`
+- `REST Client`
