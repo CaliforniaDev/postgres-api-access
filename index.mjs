@@ -1,5 +1,5 @@
-import createApp from "./src/app.js";
-import pool from "./src/pool.js";
+import createApp from "./src/app.mjs";
+import pool from "./src/pool.mjs";
 
 const app = createApp();
 
