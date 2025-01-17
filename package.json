@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This repository contains exercises and examples from an online course section on accessing APIs directly from PostgreSQL. The focus is on learning how to integrate external APIs into database workflows, leveraging PostgreSQL's powerful features.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "migrate": "node-pg-migrate",
     "start": "nodemon index.js"
