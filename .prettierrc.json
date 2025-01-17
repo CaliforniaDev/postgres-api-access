@@ -1,12 +1,9 @@
 {
-  "plugins": [
-    "prettier-plugin-sql-cst"
-  ],
+  "singleQuote": true,
+  "plugins": ["prettier-plugin-sql-cst"],
   "overrides": [
     {
-      "files": [
-        "*.sql"
-      ],
+      "files": ["*.sql"],
       "options": {
         "parser": "postgresql",
         "sqlKeywordCase": "upper"
