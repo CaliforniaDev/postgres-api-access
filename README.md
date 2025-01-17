@@ -20,3 +20,5 @@ The following dependencies are required for this project:
 - `pg`
 - `pg-format`
 - `supertest`
+- `dotenv`
+- `dotenv-cli`
