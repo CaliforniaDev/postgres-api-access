@@ -5,20 +5,13 @@
  */
 
 import pool from '../pool.mjs';
+import toCamelCase from './utils/to-camel-case.mjs';
+
 
 class UserRepo {
   static async find() {
     const { rows } = await pool.query('SELECT * FROM users');
-    const parsedRows = rows.map((row) => {
-      return Object.entries(row).reduce((acc, [key, value]) => {
-        const camelCase = key.replace(/([-_][a-z])/gi, ($1) =>
-          $1.toUpperCase().replace('_', ''),
-        );
-        acc[camelCase] = value;
-        return acc;
-      }, {});
-    });
-    return parsedRows;
+    return toCamelCase(rows);
   }
 
   static async findById() {}
