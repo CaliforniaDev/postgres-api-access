@@ -24,6 +24,7 @@ class UserRepo {
    * @throws Will throw an error if the query fails.
    */
   static async findById(id) {
+    // ! Use a prepared statement to prevent SQL injection attacks
     const { rows } = await pool.query(
       `SELECT * FROM users WHERE id = $1 LIMIT 1;`,
       [id],
