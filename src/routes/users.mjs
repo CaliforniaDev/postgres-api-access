@@ -41,7 +41,12 @@ router.put('/users/:id', async (req, res) => {
 
 // Route to delete a user by ID
 router.delete('/users/:id', async (req, res) => {
-  // Implementation for deleting a user goes here
+  const { id } = req.params;
+  const user = await UserRepo.delete(id);
+  if (!user) {
+    return res.sendStatus(404);
+  }
+  res.send(user);
 });
 
 export default router;

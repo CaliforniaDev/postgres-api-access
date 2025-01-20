@@ -32,7 +32,6 @@ class UserRepo {
     return toCamelCase(rows)[0];
   }
 
-
   static async insert(username, bio) {
     const { rows } = await pool.query(
       `INSERT INTO users (username, bio) VALUES ($1, $2) RETURNING *;`,
@@ -59,7 +58,13 @@ class UserRepo {
    * Deletes a user from the database.
    * @returns {Promise<void>} A promise that resolves when the user is deleted.
    */
-  static async delete() {}
+  static async delete(id) {
+    const { rows } = await pool.query(
+      `DELETE FROM users WHERE id = $1 RETURNING *;`,
+      [id],
+    );
+    return toCamelCase(rows)[0];
+  }
 }
 
 export default UserRepo;
