@@ -18,17 +18,16 @@ class UserRepo {
   }
 
   /**
-   * Retrieves a user by their ID from the database.
+   * Retrieves a user by their ID from the database using a prepared statement.
    * @param {number} id - The ID of the user to retrieve.
    * @returns {Promise<Object>} A promise that resolves to a user object.
    * @throws Will throw an error if the query fails.
-   * @note This method contains a security issue due to SQL injection vulnerability.
    */
   static async findById(id) {
-    //! WARNING: REALLY BIG SECURITY ISSUE!
-    const { rows } = await pool.query(`
-      SELECT * FROM users WHERE id = ${id} LIMIT 1;
-    `);
+    const { rows } = await pool.query(
+      `SELECT * FROM users WHERE id = $1 LIMIT 1;`,
+      [id],
+    );
     return toCamelCase(rows)[0];
   }
 
