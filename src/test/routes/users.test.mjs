@@ -3,7 +3,6 @@ import buildApp from '../../app.mjs';
 import UserRepo from '../../repos/user-repo.mjs';
 
 import pool from '../../pool.mjs';
-import { password } from 'pg/lib/defaults';
 
 beforeAll(() => {
   return pool.connect({
