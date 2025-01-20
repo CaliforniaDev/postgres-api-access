@@ -1,5 +1,5 @@
 /**
- * User Repository
+ * User Repository or Data Access Layer (DAL)
  * This class is responsible for handling all the database queries related to the user model.
  * It should be able to find, insert, update, and delete users in the database.
  */
@@ -32,11 +32,14 @@ class UserRepo {
     return toCamelCase(rows)[0];
   }
 
-  /**
-   * Inserts a new user into the database.
-   * @returns {Promise<void>} A promise that resolves when the user is inserted.
-   */
-  static async insert() {}
+
+  static async insert(username, bio) {
+    const { rows } = await pool.query(
+      `INSERT INTO users (username, bio) VALUES ($1, $2) RETURNING *;`,
+      [username, bio],
+    );
+    return toCamelCase(rows)[0];
+  }
 
   /**
    * Updates an existing user in the database.

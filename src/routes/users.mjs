@@ -13,16 +13,19 @@ router.get('/users', async (req, res) => {
 // Route to get a user by ID
 router.get('/users/:id', async (req, res) => {
   const { id } = req.params; // Extract ID from request parameters
-  const user = await UserRepo.findById(id); // Find user by ID
+  const user = await UserRepo.findById(id);
   if (!user) {
-    return res.sendStatus(404); // Send 404 if user not found
+    return res.sendStatus(404);
   }
-  res.send(user); // Send the user data
+  // Send the user data back to the client
+  res.send(user);
 });
 
 // Route to create a new user
 router.post('/users', async (req, res) => {
-  // Implementation for creating a new user goes here
+  const { username, bio } = req.body;
+  const user = await UserRepo.insert(username, bio);
+  res.send(user);
 });
 
 // Route to update a user by ID
