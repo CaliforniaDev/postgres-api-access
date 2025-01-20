@@ -30,7 +30,13 @@ router.post('/users', async (req, res) => {
 
 // Route to update a user by ID
 router.put('/users/:id', async (req, res) => {
-  // Implementation for updating a user goes here
+  const { id } = req.params;
+  const { username, bio } = req.body;
+  const user = await UserRepo.update(id, username, bio);
+  if (!user) {
+    return res.sendStatus(404);
+  }
+  res.send(user);
 });
 
 // Route to delete a user by ID

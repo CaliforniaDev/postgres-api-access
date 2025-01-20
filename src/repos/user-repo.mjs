@@ -45,7 +45,15 @@ class UserRepo {
    * Updates an existing user in the database.
    * @returns {Promise<void>} A promise that resolves when the user is updated.
    */
-  static async update() {}
+  static async update(id, username, bio) {
+    const { rows } = await pool.query(
+      `UPDATE users 
+       SET username = $1, bio = $2
+       WHERE id = $3 RETURNING *;`,
+      [username, bio, id],
+    );
+    return toCamelCase(rows)[0];
+  }
 
   /**
    * Deletes a user from the database.
