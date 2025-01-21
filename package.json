@@ -6,7 +6,7 @@
   "scripts": {
     "migrate": "node-pg-migrate",
     "start": "nodemon index.mjs",
-    "test": "jest"
+    "test": "jest --no-cache"
   },
   "repository": {
     "type": "git",
