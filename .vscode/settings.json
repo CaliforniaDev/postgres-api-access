@@ -9,6 +9,16 @@
       "database": "social_api_access",
       "username": "leodaniels",
       "password": ""
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "socialnetwork-test",
+      "database": "socialnetwork-test",
+      "username": "leodaniels",
+      "password": ""
     }
   ]
 }
