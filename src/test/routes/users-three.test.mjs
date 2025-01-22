@@ -1,21 +1,19 @@
 import request from 'supertest';
 import buildApp from '../../app.mjs';
 import UserRepo from '../../repos/user-repo.mjs';
+import Context from '../context.mjs';
 
-import pool from '../../pool.mjs';
+let context;
+beforeAll(async () => {
+  context = await Context.build();
+});
 
-beforeAll(() => {
-  return pool.connect({
-    host: 'localhost',
-    port: 5432,
-    database: 'socialnetwork-test',
-    user: 'leodaniels',
-    password: '',
-  });
+beforeEach(async () => {
+  await context.reset();
 });
 
 afterAll(() => {
-  return pool.close();
+  return context.close();
 });
 
 it('Create a user', async () => {

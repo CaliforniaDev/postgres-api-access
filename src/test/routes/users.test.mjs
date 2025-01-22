@@ -1,19 +1,20 @@
 import request from 'supertest';
 import buildApp from '../../app.mjs';
 import UserRepo from '../../repos/user-repo.mjs';
-
-import pool from '../../pool.mjs';
 import Context from '../context.mjs';
-// import { randomBytes } from 'crypto';
-// import migrate from 'node-pg-migrate';
-// import format from 'pg-format';
+
+let context;
 
 beforeAll(async () => {
-  const context = await Context.build();
+  context = await Context.build();
+});
+
+beforeEach(async () => {
+  await context.reset();
 });
 
 afterAll(() => {
-  return pool.close();
+  return context.close();
 });
 
 it('Create a user', async () => {
